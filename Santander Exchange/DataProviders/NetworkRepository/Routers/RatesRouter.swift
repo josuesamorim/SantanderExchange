@@ -15,10 +15,8 @@ enum RatesRouter {
     
     var path: String {
         switch self {
-        case.fluctuation:
-            return RatesApi.fluctuation
-        case.timeseries:
-            return RatesApi.timeseries
+        case.fluctuation: return RatesApi.fluctuation
+        case.timeseries: return RatesApi.timeseries
         }
     }
     
