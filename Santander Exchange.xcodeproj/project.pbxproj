@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		994D95BE2AC5B9FD00ECD7B6 /* BaseStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994D95BD2AC5B9FD00ECD7B6 /* BaseStore.swift */; };
+		994D95C12AC5BB8000ECD7B6 /* RatesFluctuationObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994D95C02AC5BB8000ECD7B6 /* RatesFluctuationObject.swift */; };
+		994D95C32AC5BD7800ECD7B6 /* CurrencySymbolObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994D95C22AC5BD7800ECD7B6 /* CurrencySymbolObject.swift */; };
+		994D95C52AC5BDAB00ECD7B6 /* RatesHistoricalObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994D95C42AC5BDAB00ECD7B6 /* RatesHistoricalObject.swift */; };
 		99F597272AC59EDB00505875 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F597262AC59EDB00505875 /* AppDelegate.swift */; };
 		99F597292AC59EDB00505875 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F597282AC59EDB00505875 /* SceneDelegate.swift */; };
 		99F5972B2AC59EDB00505875 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F5972A2AC59EDB00505875 /* ViewController.swift */; };
@@ -19,6 +23,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		994D95BD2AC5B9FD00ECD7B6 /* BaseStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseStore.swift; sourceTree = "<group>"; };
+		994D95C02AC5BB8000ECD7B6 /* RatesFluctuationObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesFluctuationObject.swift; sourceTree = "<group>"; };
+		994D95C22AC5BD7800ECD7B6 /* CurrencySymbolObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySymbolObject.swift; sourceTree = "<group>"; };
+		994D95C42AC5BDAB00ECD7B6 /* RatesHistoricalObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesHistoricalObject.swift; sourceTree = "<group>"; };
 		99F597232AC59EDB00505875 /* Santander Exchange.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Santander Exchange.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		99F597262AC59EDB00505875 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		99F597282AC59EDB00505875 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -43,6 +51,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		994D95BC2AC5B9E000ECD7B6 /* Stores */ = {
+			isa = PBXGroup;
+			children = (
+				994D95BD2AC5B9FD00ECD7B6 /* BaseStore.swift */,
+			);
+			path = Stores;
+			sourceTree = "<group>";
+		};
+		994D95BF2AC5BAAF00ECD7B6 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				994D95C02AC5BB8000ECD7B6 /* RatesFluctuationObject.swift */,
+				994D95C22AC5BD7800ECD7B6 /* CurrencySymbolObject.swift */,
+				994D95C42AC5BDAB00ECD7B6 /* RatesHistoricalObject.swift */,
+			);
+			path = Objects;
+			sourceTree = "<group>";
+		};
 		99F5971A2AC59EDB00505875 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +111,8 @@
 		99F5973E2AC5A1DB00505875 /* NetworkRepository */ = {
 			isa = PBXGroup;
 			children = (
+				994D95BF2AC5BAAF00ECD7B6 /* Objects */,
+				994D95BC2AC5B9E000ECD7B6 /* Stores */,
 				99F597422AC5A35A00505875 /* Routers */,
 				99F5973F2AC5A1E900505875 /* Apis */,
 			);
@@ -179,10 +207,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				994D95C52AC5BDAB00ECD7B6 /* RatesHistoricalObject.swift in Sources */,
 				99F5972B2AC59EDB00505875 /* ViewController.swift in Sources */,
 				99F597272AC59EDB00505875 /* AppDelegate.swift in Sources */,
+				994D95BE2AC5B9FD00ECD7B6 /* BaseStore.swift in Sources */,
+				994D95C12AC5BB8000ECD7B6 /* RatesFluctuationObject.swift in Sources */,
 				99F597412AC5A1FF00505875 /* RatesApi.swift in Sources */,
 				99F597472AC5A39100505875 /* CurrencyRouter.swift in Sources */,
+				994D95C32AC5BD7800ECD7B6 /* CurrencySymbolObject.swift in Sources */,
 				99F597452AC5A38300505875 /* RatesRouter.swift in Sources */,
 				99F597292AC59EDB00505875 /* SceneDelegate.swift in Sources */,
 			);
