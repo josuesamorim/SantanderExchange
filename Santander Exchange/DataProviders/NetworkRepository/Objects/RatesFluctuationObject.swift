@@ -7,7 +7,6 @@
 
 import Foundation
 
-typealias RatesFluctuationObject = [String: FlutuactionObject]
 
 struct FlutuactionObject: Codable {
     let change: Double

@@ -5,11 +5,13 @@
 //  Created by Josué Amorim on 29/09/23.
 //
 
+
 import Foundation
 
 protocol RatesHistoricalDataProviderDelegate: DataProviderManagerDelegate {
     func success(model: RatesHistoricalObject)
 }
+
 
 class RatesHistoricalDataProvider: DataProviderManager<RatesHistoricalDataProviderDelegate, RatesHistoricalObject>{
     

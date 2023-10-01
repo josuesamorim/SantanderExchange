@@ -100,6 +100,13 @@
 			path = CurrencySymbolsDataProvider;
 			sourceTree = "<group>";
 		};
+		99B3D91E2AC82EF30095AC26 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		99F5971A2AC59EDB00505875 = {
 			isa = PBXGroup;
 			children = (
@@ -119,6 +126,7 @@
 		99F597252AC59EDB00505875 /* Santander Exchange */ = {
 			isa = PBXGroup;
 			children = (
+				99B3D91E2AC82EF30095AC26 /* Views */,
 				99F5973D2AC5A1D000505875 /* DataProviders */,
 				99F597262AC59EDB00505875 /* AppDelegate.swift */,
 				99F597282AC59EDB00505875 /* SceneDelegate.swift */,

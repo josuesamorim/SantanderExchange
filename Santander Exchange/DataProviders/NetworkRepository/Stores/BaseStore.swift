@@ -23,8 +23,8 @@ class BaseStore {
             }
             
             if let url = response.url?.absoluteString, let json = String(data: data, encoding: .utf8){
-                print("\(response.statusCode): \(url)")
-                print("\(json)")
+//                print("\(response.statusCode): \(url)")
+//                print("\(json)")
             }
             
             self = try JSONDecoder().decode(RateResult.self, from: data)
@@ -44,8 +44,8 @@ class BaseStore {
             }
             
             if let url = response.url?.absoluteString, let json = String(data: data, encoding: .utf8){
-                print("\(response.statusCode): \(url)")
-                print("\(json)")
+//                print("\(response.statusCode): \(url)")
+//                print("\(json)")
             }
             
             self = try JSONDecoder().decode(SymbolResult.self, from: data)
