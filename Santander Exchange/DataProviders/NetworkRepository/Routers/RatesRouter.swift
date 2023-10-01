@@ -44,7 +44,7 @@ enum RatesRouter {
         var request = URLRequest(url: url.appendingPathComponent(path), timeoutInterval: Double.infinity)
         
         request.httpMethod = HttpMethod.get.rawValue
-        request.addValue(RatesApi.apiKey, forHTTPHeaderField: "apiKey")
+        request.addValue(RatesApi.apiKey, forHTTPHeaderField: "apikey")
         
         return request
     }
