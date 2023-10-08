@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <device id="retina6_72" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -14,34 +15,187 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Santander_Exchange" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0JP-mC-Drr">
-                                <rect key="frame" x="148" y="380" width="75" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Button"/>
-                                <connections>
-                                    <action selector="button:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ctZ-xy-1yq"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="XtX-lS-yi1" userLabel="HeaderStackView">
+                                <rect key="frame" x="0.0" y="59" width="430" height="140"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo_Santander_White" translatesAutoresizingMaskIntoConstraints="NO" id="ENj-1f-m75">
+                                        <rect key="frame" x="130" y="0.0" width="170" height="59"/>
+                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="-13" translatesAutoresizingMaskIntoConstraints="NO" id="jB3-dA-eV1" userLabel="LabelsStackView">
+                                        <rect key="frame" x="20" y="59" width="390" height="81"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Câmbio" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UNk-CP-VdP">
+                                                <rect key="frame" x="0.0" y="0.0" width="94" height="31.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
+                                                <color key="textColor" systemColor="systemBackgroundColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="07 de outubro de 2023" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J6T-uV-Mmg">
+                                                <rect key="frame" x="0.0" y="18.333333333333339" width="206" height="62.666666666666657"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                                <color key="textColor" systemColor="systemBackgroundColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" name="santanderRed"/>
+                                <constraints>
+                                    <constraint firstItem="jB3-dA-eV1" firstAttribute="leading" secondItem="XtX-lS-yi1" secondAttribute="leading" constant="20" id="1tE-4v-Pzs"/>
+                                    <constraint firstItem="jB3-dA-eV1" firstAttribute="top" secondItem="ENj-1f-m75" secondAttribute="bottom" id="YKC-UU-xDd"/>
+                                    <constraint firstAttribute="height" constant="140" id="umP-aC-s0E"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="IP4-x0-hFt" userLabel="FooterStackView">
+                                <rect key="frame" x="0.0" y="828" width="430" height="70"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo_Dio" translatesAutoresizingMaskIntoConstraints="NO" id="3Jy-vL-7Zd">
+                                        <rect key="frame" x="187.66666666666666" y="0.0" width="55" height="39.333333333333336"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="www.dio.me/users/josuedesouzaamorim" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F1S-J9-R8A">
+                                        <rect key="frame" x="83.666666666666657" y="39.333333333333371" width="262.66666666666674" height="30.666666666666671"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                        <color key="textColor" systemColor="systemBackgroundColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" name="santanderRed"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="RLV-ZN-a4B"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="70" id="bYq-Nr-PcD"/>
+                                </constraints>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I8n-xu-i19" userLabel="CardView" customClass="ShadowedStackView" customModule="Santander_Exchange" customModuleProvider="target">
+                                <rect key="frame" x="20" y="209" width="390" height="200"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="S5h-VJ-LiR" userLabel="VerticalStack">
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="200"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="CKp-Og-9lI" userLabel="UIPickers">
+                                                <rect key="frame" x="0.0" y="0.0" width="390" height="150"/>
+                                                <subviews>
+                                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tJt-FG-Lc3">
+                                                        <rect key="frame" x="0.0" y="0.0" width="195" height="150"/>
+                                                    </pickerView>
+                                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GuC-gp-UH5">
+                                                        <rect key="frame" x="195" y="0.0" width="195" height="150"/>
+                                                    </pickerView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="150" id="e0x-qq-ePR"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="5IS-JM-D6L" userLabel="ResultLabelStackView">
+                                                <rect key="frame" x="0.0" y="150" width="390" height="50"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Digite o Valor" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Izd-8w-c3f" userLabel="TextField">
+                                                        <rect key="frame" x="0.0" y="10.666666666666687" width="130" height="28.666666666666671"/>
+                                                        <color key="backgroundColor" systemColor="systemGray3Color"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
+                                                    </textField>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="equal" translatesAutoresizingMaskIntoConstraints="NO" id="Upi-Nx-W2l">
+                                                        <rect key="frame" x="130" y="10" width="130" height="30"/>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0JX-vL-3ba" userLabel="ResultLabel">
+                                                        <rect key="frame" x="260" y="0.0" width="130" height="50"/>
+                                                        <color key="backgroundColor" name="santanderSelect"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="VDm-g4-Lr5"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="5IS-JM-D6L" firstAttribute="top" secondItem="CKp-Og-9lI" secondAttribute="bottom" id="LfY-a2-hqL"/>
+                                            <constraint firstAttribute="trailing" secondItem="5IS-JM-D6L" secondAttribute="trailing" id="T0Y-mp-vz0"/>
+                                            <constraint firstItem="5IS-JM-D6L" firstAttribute="leading" secondItem="S5h-VJ-LiR" secondAttribute="leading" id="wyi-mz-e5m"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="S5h-VJ-LiR" secondAttribute="trailing" id="SkV-9N-t1E"/>
+                                    <constraint firstItem="S5h-VJ-LiR" firstAttribute="leading" secondItem="I8n-xu-i19" secondAttribute="leading" id="Wci-ti-59o"/>
+                                    <constraint firstAttribute="height" constant="200" id="Wtn-Qe-s6u"/>
+                                    <constraint firstItem="S5h-VJ-LiR" firstAttribute="top" secondItem="I8n-xu-i19" secondAttribute="top" id="oQz-NY-TI9"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="19j-Zd-YcM" userLabel="ButtonStackView">
+                                <rect key="frame" x="100" y="419" width="230" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uqW-KM-CR1">
+                                        <rect key="frame" x="0.0" y="0.0" width="230" height="50"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Converter">
+                                            <color key="baseBackgroundColor" name="santanderRed"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="converterButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="G8j-2R-NWI"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="P8q-z7-JBt"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="santanderBackground"/>
+                        <constraints>
+                            <constraint firstItem="IP4-x0-hFt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="1yM-HJ-xTj"/>
+                            <constraint firstItem="19j-Zd-YcM" firstAttribute="top" secondItem="I8n-xu-i19" secondAttribute="bottom" constant="10" id="2GK-lS-fCy"/>
+                            <constraint firstAttribute="trailing" secondItem="I8n-xu-i19" secondAttribute="trailing" constant="20" id="BLU-yf-zSg"/>
+                            <constraint firstItem="I8n-xu-i19" firstAttribute="top" secondItem="XtX-lS-yi1" secondAttribute="bottom" constant="10" id="CbV-Ww-phO"/>
+                            <constraint firstItem="XtX-lS-yi1" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Geb-w6-9WB"/>
+                            <constraint firstItem="I8n-xu-i19" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Z42-NP-9Ei"/>
+                            <constraint firstItem="19j-Zd-YcM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="bqz-YY-ynY"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XtX-lS-yi1" secondAttribute="trailing" id="cOz-Mm-EM6"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="19j-Zd-YcM" secondAttribute="trailing" constant="100" id="heB-uS-hkU"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="IP4-x0-hFt" secondAttribute="trailing" id="mpF-mL-VCR"/>
+                            <constraint firstItem="IP4-x0-hFt" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="z42-XN-iEe"/>
+                            <constraint firstItem="XtX-lS-yi1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="zDD-6N-ZKH"/>
+                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="buttonOutlet" destination="0JP-mC-Drr" id="Ce0-bq-gIn"/>
+                        <outlet property="headerDateLabel" destination="J6T-uV-Mmg" id="nfS-44-TBv"/>
+                        <outlet property="picker1" destination="tJt-FG-Lc3" id="di3-fa-6aa"/>
+                        <outlet property="picker2" destination="GuC-gp-UH5" id="SuH-mt-34U"/>
+                        <outlet property="resultLabel" destination="0JX-vL-3ba" id="dyJ-l1-hXc"/>
+                        <outlet property="textField" destination="Izd-8w-c3f" id="anB-Ax-zTc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="114" y="4"/>
+            <point key="canvasLocation" x="113.74045801526717" y="3.5211267605633805"/>
         </scene>
     </scenes>
     <resources>
+        <image name="Logo_Dio" width="55" height="20"/>
+        <image name="Logo_Santander_White" width="170" height="30"/>
+        <image name="equal" width="30" height="30"/>
+        <namedColor name="santanderBackground">
+            <color red="0.96078431372549022" green="0.97647058823529409" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="santanderRed">
+            <color red="0.92549019607843142" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="santanderSelect">
+            <color red="0.92156862745098034" green="0.93333333333333335" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray3Color">
+            <color red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
