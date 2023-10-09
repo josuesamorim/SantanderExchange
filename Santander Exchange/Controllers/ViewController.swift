@@ -15,11 +15,17 @@ class ViewController: UIViewController {
     @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var headerDateLabel: UILabel!
     
+    static var conversionsHistory: [Conversion] = []
     var currentSymbolsArray: [String] = []
     var rate: Double = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        Task {
+            await getSymbolData()
+        }
         
         picker1.delegate = self
         picker1.dataSource = self
@@ -32,29 +38,115 @@ class ViewController: UIViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapGesture)
         
-        Task {
-            var dateInPortuguese = actualDateInPortuguese()
+        Task.init {
+            let dateInPortuguese = actualDateInPortuguese()
             headerDateLabel.text = dateInPortuguese
-            await getSymbolData()
+            //await getSymbolData()
         }
     }
     
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
+
+
+    
+//    @IBAction func converterButton(_ sender: UIButton) {
+//        let selectedRow1 = picker1.selectedRow(inComponent: 0)
+//        let selectedRow2 = picker2.selectedRow(inComponent: 0)
+//        
+//        let selectValue1 = currentSymbolsArray[selectedRow1]
+//        let selectValue2 = currentSymbolsArray[selectedRow2]
+//        
+//        let result = calcConvertion()
+//        let formattedResult = formatDoubleToTwoDecimalPlaces(result)
+//        resultLabel.text = "\(formattedResult) \(selectValue2)"
+//    }
     
     @IBAction func converterButton(_ sender: UIButton) {
         let selectedRow1 = picker1.selectedRow(inComponent: 0)
         let selectedRow2 = picker2.selectedRow(inComponent: 0)
         
-        let selectValue1 = currentSymbolsArray[selectedRow1]
-        let selectValue2 = currentSymbolsArray[selectedRow2]
         
+        // Verifique se os índices selecionados estão dentro dos limites do currentSymbolsArray
+        if selectedRow1 < currentSymbolsArray.count && selectedRow2 < currentSymbolsArray.count {
+            let selectValue1 = currentSymbolsArray[selectedRow1]
+            let selectValue2 = currentSymbolsArray[selectedRow2]
+            
+            doFetchData(firstCurrency: selectValue1, secondCurrency: selectValue2)
+            
+            if let inputValue = Double(textField.text ?? "") {
+                let result = calcConvertion()
+                let formattedResult = formatDoubleToTwoDecimalPlaces(result)
+                resultLabel.text = "\(formattedResult) \(selectValue2)"
+                
+
+                let conversion = Conversion(fromCurrency: selectValue1, toCurrency: selectValue2, amount: inputValue, result: result)
+                ViewController.conversionsHistory.append(conversion)
+            }
+        } else {
+            resultLabel.text = "Selecione moedas válidas"
+        }
+    }
+
+    
+    
+    @IBAction func historicButton(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "goToHistoric", sender: self)
+    }
+    
+    
+    @IBAction func aboutButton(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "goToAbout", sender: self)
         
-        doFetchData(firstCurrency: selectValue1, secondCurrency: selectValue2)
-        let result = calcConvertion()
-        let formattedResult = formatDoubleToTwoDecimalPlaces(result)
-        resultLabel.text = "\(formattedResult) \(selectValue2)"
+    }
+    
+    
+}
+
+// MARK: - UIPickerView
+extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1 // Número de componentes (colunas) no UIPickerView
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return currentSymbolsArray.count // Número de linhas no UIPickerView
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return currentSymbolsArray[row] // Título para cada linha
+    }
+
+}
+
+// MARK: - TextField
+extension ViewController: UITextFieldDelegate {
+           
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}
+
+// MARK: - RatesHistoricalDataProviderDelegate
+extension ViewController: RatesHistoricalDataProviderDelegate {
+    
+    func success(model: RatesHistoricalObject) {
+        let currencyRates = model
+        let date = formattedDate()
+        
+        if let innerDictionary = currencyRates[date], let rate = innerDictionary.values.first {
+            self.rate = rate
+        } else {
+            print("A chave externa ou interna não foi encontrada no dicionário.")
+        }
+    }
+}
+
+// MARK: - Functions
+extension ViewController {
+    
+    @objc private func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     private func doFetchData(firstCurrency: String, secondCurrency: String) {
@@ -63,6 +155,8 @@ class ViewController: UIViewController {
         let date = formattedDate()
         rateHistoricalDataProvider.fetchTimesseries(by: "\(firstCurrency)", from: ["\(secondCurrency)"], startDate: date, endDate: date)
     }
+    
+
     
     private func getSymbolData() async {
         let currencyStore = CurrencyStore()
@@ -96,7 +190,7 @@ class ViewController: UIViewController {
         return dateFormatter.string(from: currentDate)
     }
     
-    func actualDateInPortuguese() -> String {
+    private func actualDateInPortuguese() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "pt_BR")
         dateFormatter.setLocalizedDateFormatFromTemplate("dd MMMM yyyy")
@@ -120,43 +214,22 @@ class ViewController: UIViewController {
             return "Erro ao formatar"
         }
     }
-}
-
-extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
-    // Implementação da extensão para o UIPickerViewDelegate e UIPickerViewDataSource
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1 // Número de componentes (colunas) no UIPickerView
-    }
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return currentSymbolsArray.count // Número de linhas no UIPickerView
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return currentSymbolsArray[row] // Título para cada linha
-    }
 
 }
 
-extension ViewController: UITextFieldDelegate {
-    // Implementação da extensão para o UITextFieldDelegate
-    // MARK: - TextField
-               
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-}
+struct Conversion {
+    let fromCurrency: String
+    let toCurrency: String
+    let amount: Double
+    let result: Double
+    let date: Date
 
-extension ViewController: RatesHistoricalDataProviderDelegate {
-    func success(model: RatesHistoricalObject) {
-        let currencyRates = model
-        let date = formattedDate()
-        
-        if let innerDictionary = currencyRates[date], let rate = innerDictionary.values.first {
-            self.rate = rate
-        } else {
-            print("A chave externa ou interna não foi encontrada no dicionário.")
-        }
+    init(fromCurrency: String, toCurrency: String, amount: Double, result: Double) {
+        self.fromCurrency = fromCurrency
+        self.toCurrency = toCurrency
+        self.amount = amount
+        self.result = result
+        self.date = Date() // Use a data atual como data da conversão
     }
 }
