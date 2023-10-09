@@ -5,25 +5,43 @@
 //  Created by Josué Amorim on 08/10/23.
 //
 
+// Importe o UIKit
 import UIKit
 
-class HistoricViewController: UIViewController {
-
+class HistoricViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet weak var table: UITableView!
+    
+    var historicData: [Conversion] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        table.dataSource = self
+        loadHistoricData()
+    }
+    
+    func updateTable() {
+        table.reloadData()
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func loadHistoricData() {
+        historicData = ViewController.conversionsHistory
+        updateTable()
     }
-    */
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return historicData.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let historicDt = historicData[indexPath.row]
 
+        let cell = table.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomTableViewCell
+        cell.label.text = "\(historicDt.amount)  \(historicDt.fromCurrency) para \(historicDt.toCurrency) = \(historicDt.result) \(historicDt.toCurrency)"
+        
+        
+        return cell
+    }
 }
